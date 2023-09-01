@@ -1,0 +1,21 @@
+name: MFA Sweep
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mfa_sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: mfa Sweep
+        id: sweep
+        run: |
+          $env:USERNAME = ${{ github.event.inputs.username }}
+          $env:PASSWORD = ${{ github.event.inputs.password }}
+          Import-Module MFASweep.ps1
+          $results = Invoke-MFASweep -Username $env:USERNAME -Password $env:PASSWORD -Recon
+
+          echo "results = $results" >> $env:GITHUB_OUTPUT
+        shell: pwsh
