@@ -16,17 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - id: pwsh
-        run: |
-          apt-get -y update 
-          apt-get -y install wget apt-transport-https software-properties-common
-          wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
-          dpkg -i packages-microsoft-prod.deb
-          rm packages-microsoft-prod.deb
-          apt-get -y update
-          apt-get install -y powershell
       - name: mfa Sweep
-        id: sweep
+        id: sweepgh broi
         working-directory: ${{ github.workspace }}
         env:
           USERNAME: ${{ github.event.inputs.username }}
