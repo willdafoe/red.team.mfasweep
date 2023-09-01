@@ -2,6 +2,13 @@ name: MFA Sweep
 
 on:
   workflow_dispatch:
+    inputs:
+      username:
+        description: 'Username'
+        required: true
+      password:
+        description: 'Password'
+        required: true
 
 jobs:
   mfa_sweep:
