@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: mfa Sweep
-        id: sweepgh broi
+        id: sweep
         working-directory: ${{ github.workspace }}
         env:
           USERNAME: ${{ github.event.inputs.username }}
